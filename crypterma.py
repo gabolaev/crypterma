@@ -6,18 +6,16 @@
 
 import requests
 
-# TODO: Pretty ascii plot [DONE]
-# TODO: move all the shit to the configuration file [DONE]
-# TODO: Dots plot [DONE]
 # TODO: Argument parsing
 # TODO: Today plot
+
 import graph
 from config import *
 
 
 def run(start, end):
-    response = requests.get(url=API_URL, params={'start': start, 'end': end}).json()
+    response = requests.get(url=API_URL, params={'start': start, 'end': end, 'currency': 'RUB'}).json()
     graph.plotting(response['bpi'])
 
 
-run('2016-08-06', '2017-07-05')
+run('2017-11-06', '2018-01-15')
