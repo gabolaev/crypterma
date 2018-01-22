@@ -1,6 +1,6 @@
 from termcolor import colored
 
-from config import *
+from src.config import *
 
 
 def percentage(currValue, fromValue):

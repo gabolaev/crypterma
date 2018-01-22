@@ -8,7 +8,7 @@ import requests
 
 import graph
 import report
-from config import *
+from src.config import *
 
 
 # TODO: Argument parsing
