@@ -6,19 +6,20 @@
 
 import requests
 
-# TODO: Argument parsing
-# TODO: Today plot
-
 import graph
 import report
 from config import *
 
 
+# TODO: Argument parsing
+# TODO: Today plot
+
 def run(start, end, wallet=None):
     plotResponse = requests.get(url=API_PLOT_URL, params={'start': start, 'end': end, 'currency': 'RUB'}).json()
-    reportResponse = requests.get(url=API_NOW_URL.format('' if wallet is None else f'/{wallet}')).json()
     graph.plotting(plotResponse['bpi'])
-    report.printReport(reportResponse['bpi'])
+
+    reportResponse = requests.get(url=API_NOW_URL.format('' if wallet is None else f'/{wallet}')).json()
+    report.printReport(reportResponse['time'], reportResponse['bpi'][wallet])
 
 
-run('2017-11-06', '2018-01-15', 'RUB')
+run('2017-11-14', '2018-01-24', 'RUB')
