@@ -9,7 +9,8 @@ def dateWithSecondsShift(seconds=0):
 
 
 def argConfig():
-    parser = argparse.ArgumentParser('INFO MESSAGE')
+    parser = argparse.ArgumentParser(description='ASCII-chart version of how crypto-currency grows',
+                                     epilog="Note, that days/month priority is higher than from/to date's")
 
     parser.add_argument('-m', '--months', type=int, help='For last N months')
     parser.add_argument('-d', '--days', type=int, help='For last N days')
