@@ -25,13 +25,19 @@ def argConfig():
 
 def parsePriorities(args):
     namespace = argConfig().parse_args(args)
+    currDate = dateWithSecondsShift()
 
     # in fact, i can write this statement in one line, but it will be a fucking comprehensible piece of shit
     if namespace.days or namespace.months:
         return dateWithSecondsShift(
             int(namespace.days or 0) * SECONDS_IN_DAY +
             int(namespace.months or 0) * SECONDS_IN_MONTH), \
-               dateWithSecondsShift(), \
+               currDate, \
                namespace.currency
     else:
-        return namespace.from_date, namespace.to_date, namespace.currency
+        end = namespace.to_date or currDate
+        if namespace.from_date or namespace.to_date:
+            start = namespace.from_date or BEGINNING
+        else:
+            start = dateWithSecondsShift(STANDARD_DATE_SHIFT_SECONDS)
+        return start, end, namespace.currency

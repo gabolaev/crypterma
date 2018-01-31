@@ -1,6 +1,6 @@
 WIDTH = 100
-HEIGHT = 40
 COUNT_OF_DATES = 4
+BEGINNING = '2010-07-17'
 DATE_LENGTH = 12
 COLORS = ['magenta', 'red', 'yellow', 'green', 'blue', 'cyan', None]
 

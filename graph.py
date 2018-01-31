@@ -3,13 +3,14 @@ from termcolor import colored
 from src.config import *
 
 
-def percentage(currValue, fromValue):
-    return currValue * HEIGHT / fromValue
+def percentage(currValue, fromValue, height):
+    return currValue * height / fromValue
 
 
-def getRandomColor():
-    import random
-    return random.choice(COLORS)
+def calculateHeight(minValue, maxValue):
+    # <math>
+    return 30 + int(minValue / maxValue * 30)
+    # </math> :)
 
 
 def compress(dots):
@@ -29,29 +30,31 @@ def compress(dots):
 
 def plotting(dots):
     dots = compress(dots)
-    maxValue = max(dots.values())
-    minHeight = int(percentage(min(dots.values()), maxValue))
+    maxValue, minValue = max(dots.values()), min(dots.values())
+    height = calculateHeight(minValue, maxValue)
+    minHeight = int(percentage(minValue, maxValue, height))
 
     axisValue = maxValue
     oldAxisValue = maxValue + 1
 
     rainbow = len(COLORS)
-    for i in range(HEIGHT, minHeight - 1, -1):
+    for i in range(height, minHeight - 1, -1):
         gridColor = COLORS[i % rainbow]
         for key, value in dots.items():
-            if percentage(value, maxValue) >= i:
+            if percentage(value, maxValue, height) >= i:
                 printingChar = CHART_LINE
                 if value < axisValue:
                     axisValue = value
             else:
                 printingChar = GRID_LINE
 
-            print(colored(printingChar, gridColor if printingChar == GRID_LINE else 'white'), end='')
+            print(colored(printingChar, gridColor if printingChar == GRID_LINE else 'white'), end='', flush=True)
 
-        print(colored('{}{}'.format(CHART_LEFT_BORDER, axisValue if axisValue != oldAxisValue else ''), gridColor))
+        print(colored('{}{}'.format(CHART_LEFT_BORDER, axisValue if axisValue != oldAxisValue else ''), gridColor), flush=True)
         oldAxisValue = axisValue
 
     # I think it's bullshit, but for now let it be
+    # TODO
     dateStep = int((len(dots) - DATE_LENGTH * COUNT_OF_DATES) / COUNT_OF_DATES)
     print(colored(CHART_LOWER_BORDER, 'white') * len(dots))
 

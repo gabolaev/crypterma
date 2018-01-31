@@ -52,7 +52,6 @@ def run(start, end, currency='USD'):
 
     if not todayResponse['bpi']:
         return print('API Error')
-
     #
     # for printing the difference between today and yesterday price
     #
@@ -64,7 +63,6 @@ def run(start, end, currency='USD'):
             'currency': currency
         }
     ))
-
     if not yesterdayResponse['bpi']:
         return print('API Error')
 
