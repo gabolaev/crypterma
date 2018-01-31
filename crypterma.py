@@ -20,13 +20,10 @@ def checkOk(response):
         return response.json()
     else:
         print(response.text)
-        return False
 
 
 def run(start, end, currency='USD'):
-    #
-    # for plotting awesome graph :)
-    #
+
     plotResponse = checkOk(requests.get(
         url=API_HISTORICAL_URL,
         params=
@@ -40,11 +37,9 @@ def run(start, end, currency='USD'):
     if not plotResponse:
         return
 
-    graph.plotting(plotResponse['bpi'])
+    print(f'\nFrom {start} to {end}\n')
 
-    #
-    # for printing the Bitcoin current price
-    #
+    graph.plotting(plotResponse['bpi'])
 
     todayResponse = checkOk(requests.get(
         url=API_CURRENT_URL.format(f'/{currency}')
@@ -52,9 +47,7 @@ def run(start, end, currency='USD'):
 
     if not todayResponse['bpi']:
         return print('API Error')
-    #
-    # for printing the difference between today and yesterday price
-    #
+
     yesterdayResponse = checkOk(requests.get(
         url=API_HISTORICAL_URL,
         params=

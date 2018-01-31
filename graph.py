@@ -8,9 +8,7 @@ def percentage(currValue, fromValue, height):
 
 
 def calculateHeight(minValue, maxValue):
-    # <math>
-    return 30 + int(minValue / maxValue * 30)
-    # </math> :)
+    return START_HEIGHT + int(minValue / maxValue * START_HEIGHT)
 
 
 def compress(dots):
@@ -30,6 +28,7 @@ def compress(dots):
 
 def plotting(dots):
     dots = compress(dots)
+
     maxValue, minValue = max(dots.values()), min(dots.values())
     height = calculateHeight(minValue, maxValue)
     minHeight = int(percentage(minValue, maxValue, height))
@@ -47,18 +46,15 @@ def plotting(dots):
                     axisValue = value
             else:
                 printingChar = GRID_LINE
-
             print(colored(printingChar, gridColor if printingChar == GRID_LINE else 'white'), end='', flush=True)
-
-        print(colored('{}{}'.format(CHART_LEFT_BORDER, axisValue if axisValue != oldAxisValue else ''), gridColor), flush=True)
+        print(colored('{}{}'.format(CHART_LEFT_BORDER, axisValue if axisValue != oldAxisValue else ''), gridColor))
         oldAxisValue = axisValue
 
-    # I think it's bullshit, but for now let it be
-    # TODO
-    dateStep = int((len(dots) - DATE_LENGTH * COUNT_OF_DATES) / COUNT_OF_DATES)
     print(colored(CHART_LOWER_BORDER, 'white') * len(dots))
 
-    if dateStep > 0:
-        dates = list(dots.keys())
-        dateIntervals = [i / COUNT_OF_DATES for i in range(0, COUNT_OF_DATES + 1)]
-        print((' ' * dateStep).join('{}'.format(dates[int((len(dates) - 1) * i)]) for i in dateIntervals))
+    dates = list(dots.keys())
+    countOfDates = int(len(dots) / (DATE_STRING_LENGTH + DATES_SPACE_LENGTH))
+
+    if countOfDates:
+        dateIntervals = [i / countOfDates for i in range(0, countOfDates + 1)]
+        print((' ' * DATES_SPACE_LENGTH).join('{}'.format(dates[int(i * (len(dates) - 1))]) for i in dateIntervals))

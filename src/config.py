@@ -1,7 +1,9 @@
 WIDTH = 100
 COUNT_OF_DATES = 4
 BEGINNING = '2010-07-17'
-DATE_LENGTH = 12
+DATE_STRING_LENGTH = 10
+DATES_SPACE_LENGTH = 4
+START_HEIGHT = 30
 COLORS = ['magenta', 'red', 'yellow', 'green', 'blue', 'cyan', None]
 
 CHART_LINE = '█'
