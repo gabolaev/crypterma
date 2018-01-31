@@ -102,3 +102,6 @@ ENV/
 
 # jetbrains
 .idea/
+
+# macos
+.DS_Store

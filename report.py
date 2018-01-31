@@ -7,7 +7,7 @@ from src.config import *
 
 def printReport(timeInfo, currencyToday, priceYesterday):
     # this is a result of dirty sex between Python and HTML
-    print('\n' + colored('[Bitcoin current rate]', color='white', on_color='on_yellow', attrs=['bold']))
+    print('\n' + colored('[Bitcoin current rate]', color='white', on_color='on_green', attrs=['bold']))
     print(colored(f'Update time: {timeInfo["updated"]}', 'blue'), colored(f'(Your time is: {strftime("UTC%z (%Z) %H:%M:%S", localtime())})\n', 'red'))
 
     difference = currencyToday['rate_float'] - priceYesterday
