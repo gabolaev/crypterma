@@ -1,19 +1,6 @@
-#!/usr/local/bin/python3
-# Now it's just testing file
-# Soon there will be an arg parse
-# You also can change config width and height
-# for detailed view on some time intervals
-
-
-import sys
-
 import requests
-
-import args
-import graph
-import report
-from src.config import *
-
+from .configs.config import *
+from . import graph, report
 
 def checkOk(response):
     if response.ok:
@@ -23,7 +10,6 @@ def checkOk(response):
 
 
 def run(start, end, currency='USD'):
-
     plotResponse = checkOk(requests.get(
         url=API_HISTORICAL_URL,
         params=
@@ -60,13 +46,5 @@ def run(start, end, currency='USD'):
         return print('API Error')
 
     report.printReport(todayResponse['time'],
-                       todayResponse['bpi'][currency],
-                       list(yesterdayResponse['bpi'].values())[0])
-
-
-try:
-    from_date, to_date, currency = args.parsePriorities(sys.argv[1:])
-    run(from_date, to_date, currency)
-
-except Exception as ex:
-    print(ex)
+                todayResponse['bpi'][currency],
+                list(yesterdayResponse['bpi'].values())[0])

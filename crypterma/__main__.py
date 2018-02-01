@@ -1,7 +1,8 @@
 import argparse
-from time import strftime, localtime, time
-
-from src.config import *
+import sys
+import crypterma
+from time import localtime, strftime, time
+from crypterma.configs import *
 
 
 def dateWithSecondsShift(seconds=0):
@@ -40,3 +41,16 @@ def parsePriorities(args):
         else:
             start = dateWithSecondsShift(STANDARD_DATE_SHIFT_SECONDS)
         return start, end, namespace.currency
+
+
+def main(args=None):
+    """The main routine."""
+    try:
+        from_date, to_date, currency = parsePriorities(sys.argv[1:])
+        crypterma.core.run(from_date, to_date, currency)
+    except Exception as ex:
+        print(ex)
+
+
+if __name__ == "__main__":
+    main()
