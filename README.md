@@ -4,7 +4,9 @@ A console application that allows you to see a graph of the Bitcoin price change
 Almost all currencies are supported.
 ###### Required Python3.6 and upper
 #### install:
+```bash
 pip install crypterma
+```
 #### examples:
 ```bash
 crypterma -f 2013-10-13 -t 2017-01-02 -c RUB # from 13 October 2013 to 2 January 2017 in Russian Rubles
