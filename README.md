@@ -3,7 +3,7 @@
 A console application that allows you to see a graph of the Bitcoin price change in any time interval. Also prints the current cost and comparison with yesterday's value.
 Almost all currencies are supported.
 ###### Required Python3.6 and upper
-#### install:
+#### installation:
 ```bash
 pip install crypterma
 ```
