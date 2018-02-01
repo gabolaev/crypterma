@@ -20,3 +20,4 @@ crypterma                                    # for the last 2 months in United S
 
 <img src="https://github.com/gabolaev/crypterma/blob/master/src/example.png">
 
+for better sensations, open the terminal in full screen mode
