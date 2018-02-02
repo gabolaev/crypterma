@@ -5,7 +5,7 @@ Almost all currencies are supported.
 ###### Required Python3.6 and upper
 #### installation:
 ```bash
-pip install crypterma
+pip3 install crypterma
 ```
 #### examples:
 ```bash
