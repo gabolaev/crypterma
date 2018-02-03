@@ -7,6 +7,7 @@ def checkOk(response):
         return response.json()
     else:
         print(response.text)
+        return None # AVE PEP8
 
 
 def run(start, end, currency='USD'):

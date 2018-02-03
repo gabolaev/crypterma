@@ -103,5 +103,8 @@ ENV/
 # jetbrains
 .idea/
 
-# macos
+# macOS
 .DS_Store
+
+# my own deploy scripts
+rebuild.sh

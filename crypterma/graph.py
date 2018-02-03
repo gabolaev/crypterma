@@ -41,8 +41,7 @@ def plotting(dots):
         for key, value in dots.items():
             if percentage(value, maxValue, height) >= i:
                 printingChar = CHART_LINE
-                if value < axisValue:
-                    axisValue = value
+                axisValue = min(value, axisValue)
             else:
                 printingChar = GRID_LINE
             print(colored(printingChar, gridColor if printingChar == GRID_LINE else 'white'), end='', flush=True)
