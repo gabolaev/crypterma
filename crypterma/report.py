@@ -17,4 +17,4 @@ def printReport(timeInfo, currencyToday, priceYesterday):
     print(f'{colored(1,"cyan")} Bitcoin (BTC) == {colored(currencyToday["rate"], "cyan")} {currencyDesc})')
     print(f'Yesterday it was {"more expensive for" if difference < 0 else "cheaper by"} {abs(difference)}')
     print(f'{GRID_LINE*42}')
-    print(colored("Powered by CoinDesk API (https://www.coindesk.com/price)\n", 'green'))
+    print(colored("Powered by CoinDesk API (https://www.coindesk.com/price)\n kek", 'green'))
