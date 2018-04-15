@@ -6,7 +6,7 @@ DATES_SPACE_LENGTH = 4
 START_HEIGHT = 30
 COLORS = ['magenta', 'red', 'yellow', 'green', 'blue', 'cyan', None]
 
-CHART_LINE = '█'
+CHART_LINE = '▓'
 GRID_LINE = '-'
 CHART_LEFT_BORDER = '║-'
 CHART_LOWER_BORDER = '═'
