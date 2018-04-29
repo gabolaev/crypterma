@@ -2,7 +2,7 @@ import requests
 from .configs.config import *
 from . import graph, report
 
-def checkOk(response):
+def check_ok(response):
     if response.ok:
         return response.json()
     else:
@@ -11,7 +11,7 @@ def checkOk(response):
 
 
 def run(start, end, currency='USD'):
-    plotResponse = checkOk(requests.get(
+    plot_response = check_ok(requests.get(
         url=API_HISTORICAL_URL,
         params=
         {
@@ -21,21 +21,21 @@ def run(start, end, currency='USD'):
         }
     ))
 
-    if not plotResponse:
-        return
+    if not plot_response:
+        raise Exception("API error")
 
     print(f'\nFrom {start} to {end}\n')
 
-    graph.plotting(plotResponse['bpi'])
+    graph.plotting(plot_response['bpi'])
 
-    todayResponse = checkOk(requests.get(
+    today_response = check_ok(requests.get(
         url=API_CURRENT_URL.format(f'/{currency}')
     ))
 
-    if not todayResponse['bpi']:
-        return print('API Error')
+    if not today_response['bpi']:
+        raise Exception('API Error')
 
-    yesterdayResponse = checkOk(requests.get(
+    yesterday_response = check_ok(requests.get(
         url=API_HISTORICAL_URL,
         params=
         {
@@ -43,9 +43,11 @@ def run(start, end, currency='USD'):
             'currency': currency
         }
     ))
-    if not yesterdayResponse['bpi']:
-        return print('API Error')
 
-    report.printReport(todayResponse['time'],
-                todayResponse['bpi'][currency],
-                list(yesterdayResponse['bpi'].values())[0])
+    if not yesterday_response['bpi']:
+        raise Exception('API Error')
+
+    report.print_report(
+        today_response['time'],
+        today_response['bpi'][currency],
+        list(yesterday_response['bpi'].values())[0])
