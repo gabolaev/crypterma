@@ -2,12 +2,13 @@ import requests
 from .configs.config import *
 from . import graph, report
 
+
 def check_ok(response):
     if response.ok:
         return response.json()
     else:
         print(response.text)
-        return None # AVE PEP8
+        return None  # AVE PEP8
 
 
 def run(start, end, currency='USD'):

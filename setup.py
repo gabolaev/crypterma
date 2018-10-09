@@ -12,14 +12,14 @@ setup(
     long_description='''A console application that allows you to see a graph of the Bitcoin price change in any time interval. Also prints the current cost and comparison with yesterday's value.
 Almost all currencies are supported.
 More info: https://github.com/gabolaev/crypterma/blob/master/README.md''',
-    packages=['crypterma','crypterma.configs'],
+    packages=['crypterma', 'crypterma.configs'],
     install_requires=[
         'termcolor',
         'requests'
-        ],
+    ],
     entry_points={
         'console_scripts': [
             'crypterma = crypterma.__main__:main'
-            ]
-        },
-    )
+        ]
+    },
+)
