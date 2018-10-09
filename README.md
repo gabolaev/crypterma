@@ -1,8 +1,11 @@
 # <div align="center">crypterma</div>
 #### ASCII-chart version of how crypto-currency grows
+
 A console application that allows you to see a graph of the Bitcoin price change in any time interval. Also prints the current cost and comparison with yesterday's value.
 Almost all currencies are supported.
+
 ###### Requires Python 3.6 or higher
+
 #### Installation:
 ```bash
 pip3 install crypterma
