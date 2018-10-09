@@ -45,7 +45,7 @@ def plotting(dots):
             else:
                 printing_char = GRID_LINE
             print(colored(printing_char, grid_color if printing_char == GRID_LINE else 'white'), end='', flush=True)
-        print(colored('{}{}'.format(CHART_LEFT_BORDER, axis_value if axis_value != old_axis_value else ''), grid_color))
+        print(colored(f'{CHART_LEFT_BORDER}{axis_value if axis_value != old_axis_value else ""}', grid_color))
         old_axis_value = axis_value
 
     print(colored(CHART_LOWER_BORDER, 'white') * len(dots))
@@ -55,4 +55,4 @@ def plotting(dots):
 
     if count_of_dates:
         date_intervals = [i / count_of_dates for i in range(0, count_of_dates + 1)]
-        print((' ' * DATES_SPACE_LENGTH).join('{}'.format(dates[int(i * (len(dates) - 1))]) for i in date_intervals))
+        print((' ' * DATES_SPACE_LENGTH).join(f'{dates[int(i * (len(dates) - 1))]}' for i in date_intervals))
