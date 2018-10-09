@@ -6,11 +6,11 @@ Almost all currencies are supported.
 
 ###### Requires Python 3.6 or higher
 
-#### Installation:
+#### Installation
 ```bash
 pip3 install crypterma
 ```
-#### Examples:
+#### Examples
 ```bash
 crypterma -f 2013-10-13 -t 2017-01-02 -c RUB # from 13 October 2013 to 2 January 2017 in Russian Rubles
 crypterma -f 2012-05-20 -c USD               # from 20 May 2012 until today in United States Dollars
