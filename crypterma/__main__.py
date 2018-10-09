@@ -9,7 +9,7 @@ def date_with_seconds_shift(seconds=0):
     return strftime("%Y-%m-%d", localtime(time() - seconds))
 
 
-def argConfig():
+def arg_config():
     parser = argparse.ArgumentParser(description='ASCII-chart version of how crypto-currency grows',
                                      epilog="Note, that days/month priority is higher than from/to date's")
 
@@ -25,17 +25,17 @@ def argConfig():
 
 
 def parse_priorities(args):
-    namespace = argConfig().parse_args(args)
-    currDate = date_with_seconds_shift()
+    namespace = arg_config().parse_args(args)
+    current_date = date_with_seconds_shift()
 
     if namespace.days or namespace.months:
         return date_with_seconds_shift(
             int(namespace.days or 0) * SECONDS_IN_DAY +
             int(namespace.months or 0) * SECONDS_IN_MONTH), \
-               currDate, \
+               current_date, \
                namespace.currency
     else:
-        end = namespace.to_date or currDate
+        end = namespace.to_date or current_date
         if namespace.from_date or namespace.to_date:
             start = namespace.from_date or BEGINNING
         else:
@@ -43,7 +43,7 @@ def parse_priorities(args):
         return start, end, namespace.currency
 
 
-def main(args=None):
+def main():
     """The main routine."""
     try:
         from_date, to_date, currency = parse_priorities(sys.argv[1:])
